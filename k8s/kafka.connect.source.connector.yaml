@@ -1,0 +1,27 @@
+# To use the KafkaConnector resource, you have to first enable the connector operator using
+# the strimzi.io/use-connector-resources annotation on the KafkaConnect custom resource.
+# From Apache Kafka 3.1.1 and 3.2.0, you also have to add the FileStreamSourceConnector
+# connector to the container image. You can do that using the kafka-connect-build.yaml example.
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: kafka-redis-source-connector
+  labels:
+    # The strimzi.io/cluster label identifies the KafkaConnect instance
+    # in which to create this connector. That KafkaConnect instance
+    # must have the strimzi.io/use-connector-resources annotation
+    # set to true.
+    strimzi.io/cluster: kafka-connect-cluster
+spec:
+  class: io.github.jaredpetersen.kafkaconnectredis.source.RedisSourceConnector
+  tasksMax: 1
+  autoRestart:
+    enabled: true
+  config:
+    key.converter: "org.apache.kafka.connect.json.JsonConverter"
+    value.converter: "org.apache.kafka.connect.json.JsonConverter"
+    topic: votes
+    redis.uri: redis://:Nc89JggdSC1I180@redis-cluster-leader-headless.redis-operator.svc.cluster.local:6379/0
+    redis.cluster.enabled: true
+    redis.channels: "__key*__:*"
+    redis.channels.pattern.enabled: true

@@ -1,0 +1,11 @@
+---
+# tasks file for prepare-cluster-join
+
+- name: Ensure join command parent folder exists
+  shell: sudo mkdir -p /kubeadm
+
+- name: Ensure join command parent folder have proper permissions
+  shell: sudo chown -R $USER /kubeadm
+
+- name: Remove join_command.txt file if exists
+  shell: "[ -f /kubeadm/join_command.txt ] && sudo rm -f /kubeadm/join_command.txt || echo 'join_command.txt does not exists yet' "

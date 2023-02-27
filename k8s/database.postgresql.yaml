@@ -1,0 +1,21 @@
+---
+# secret will be placed in a generated secret with the following name:
+# {username}.{clustername}.credentials.postgresql.acid.zalan.do
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: epitech-postgresql
+spec:
+  teamId: epitech
+  volume:
+    size: 10Gi
+    storageClass: longhorn
+  numberOfInstances: 2
+  users:
+    root:
+      - superuser
+      - createdb
+  databases:
+    test: root
+  postgresql:
+    version: "15"

@@ -1,0 +1,104 @@
+# image:
+#   registry: registry.opensource.zalan.do
+#   repository: acid/postgres-operator
+#   tag: v1.9.0
+#   pullPolicy: "IfNotPresent"
+
+#   # Optionally specify an array of imagePullSecrets.
+#   # Secrets must be manually created in the namespace.
+#   # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+#   # imagePullSecrets:
+#   # - name: myRegistryKeySecretName
+
+# podAnnotations: {}
+# podLabels: {}
+
+# configTarget: "OperatorConfigurationCRD"
+
+# # JSON logging format
+# enableJsonLogging: false
+
+# general configuration parameters
+configGeneral:
+  # min number of instances in Postgres cluster. -1 = no limit
+  min_instances: 2
+  # max number of instances in Postgres cluster. -1 = no limit
+  max_instances: -1
+  # period between consecutive repair requests
+  repair_period: 5m
+  # period between consecutive sync requests
+  resync_period: 30m
+  # number of routines the operator spawns to process requests concurrently
+  workers: 8
+
+# configMajorVersionUpgrade:
+#   # namespaced name of the ConfigMap with environment variables to populate on every pod
+#   pod_environment_configmap: "postgres-operator-system/pod-env-overrides"
+
+# # configure interaction with non-Kubernetes objects from AWS or GCP
+# configAwsOrGcp:
+#   # Additional Secret (aws or gcp credentials) to mount in the pod
+#   additional_secret_mount: "psql-wale-creds"
+
+#   # Path to mount the above Secret in the filesystem of the container(s)
+#   additional_secret_mount_path: "/var/secrets/google"
+
+#   # GCP credentials that will be used by the operator / pods
+#   gcp_credentials: "/var/secrets/google/key.json"
+
+#   # GCS bucket to use for shipping WAL segments with WAL-E
+#   wal_gs_bucket: "BUCKET NAME"
+
+# configure K8s cron job managed by the operator
+# configLogicalBackup:
+#   # Azure Storage Account specs to store backup results
+#   # logical_backup_azure_storage_account_name: ""
+#   # logical_backup_azure_storage_container: ""
+#   # logical_backup_azure_storage_account_key: ""
+
+#   # resources for logical backup pod, if empty configPostgresPodResources will be used
+#   # logical_backup_cpu_limit: ""
+#   # logical_backup_cpu_request: ""
+#   # logical_backup_memory_limit: ""
+#   # logical_backup_memory_request: ""
+
+#   # image for pods of the logical backup job (example runs pg_dumpall)
+#   logical_backup_docker_image: "registry.opensource.zalan.do/acid/logical-backup:v1.8.0"
+#   # path of google cloud service account json file
+#   # logical_backup_google_application_credentials: ""
+
+#   # prefix for the backup job name
+#   logical_backup_job_prefix: "logical-backup-"
+#   # storage provider - either "s3", "gcs" or "az"
+#   logical_backup_provider: "s3"
+#   # S3 Access Key ID
+#   logical_backup_s3_access_key_id: ""
+#   # S3 bucket to store backup results
+#   logical_backup_s3_bucket: "my-bucket-url"
+#   # S3 region of bucket
+#   logical_backup_s3_region: ""
+#   # S3 endpoint url when not using AWS
+#   logical_backup_s3_endpoint: ""
+#   # S3 Secret Access Key
+#   logical_backup_s3_secret_access_key: ""
+#   # S3 server side encryption
+#   logical_backup_s3_sse: "AES256"
+#   # S3 retention time for stored backups for example "2 week" or "7 days"
+#   logical_backup_s3_retention_time: ""
+#   # backup schedule in the cron format
+#   logical_backup_schedule: "30 00 * * *"
+
+# Affinity for pod assignment
+# Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+affinity: {}
+
+# Node labels for pod assignment
+# Ref: https://kubernetes.io/docs/user-guide/node-selection/
+nodeSelector: {}
+
+# Tolerations for pod assignment
+# Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+tolerations: []
+# readinessProbe:
+#   initialDelaySeconds: 60
+#   periodSeconds: 30

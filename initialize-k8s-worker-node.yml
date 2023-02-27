@@ -1,0 +1,37 @@
+---
+# - hosts: master
+#   become: yes
+#   gather_facts: false
+  # roles:
+  #   - role: prepare-cluster-join
+  #   - role: ssh-copy
+  # pre_tasks:
+  #   - name: "Make sure remote system is initialized correctly"
+  #     raw: "ln -s /usr/bin/python3 /usr/bin/python"
+  #     register: set_symlink
+  #     failed_when: set_symlink.rc != 0 and set_symlink.rc != 1
+  # tasks:
+  #   - name: get join command and place it a specific directory
+  #     shell: sudo kubeadm token create --print-join-command >> /kubeadm/join_command.txt
+
+- hosts: workers
+  become: yes
+  gather_facts: false
+  roles:
+    # - role: prepare-cluster-join
+    # - role: init-k8s
+  pre_tasks:
+    - name: "Make sure remote system is initialized correctly"
+      raw: "ln -s /usr/bin/python3 /usr/bin/python"
+      register: set_symlink
+      failed_when: set_symlink.rc != 0 and set_symlink.rc != 1
+  tasks:
+    - name: Copy Remote-To-Remote (from master to worker)
+      synchronize:
+        src: /kubeadm/join_command.txt
+        dest: /kubeadm/join_command.txt
+        private_key: /.ssh/gcloud
+      delegate_to: 34.72.140.32
+
+    - name: join cluster
+      shell: sudo $(cat /kubeadm/join_command.txt)

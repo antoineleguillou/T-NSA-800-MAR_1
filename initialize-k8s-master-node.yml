@@ -1,0 +1,44 @@
+---
+- hosts: master
+  gather_facts: true
+  become: true
+  vars:
+    kubernetes_deps_package_version: "1.21.0-00"
+    kubernetes_version: "1.21.0"
+  pre_tasks:
+    - name: "Make sure remote system is initialized correctly"
+      raw: "ln -s /usr/bin/python3 /usr/bin/python"
+      register: set_symlink
+      failed_when: set_symlink.rc != 0 and set_symlink.rc != 1
+
+  roles:
+    - role: init-k8s
+
+  tasks:
+    - name: Reset kubeadm configuration
+      shell: sudo kubeadm reset -f
+
+    - name: Remove cluster initialization files (cluster_initialized.txt)
+      shell: sudo rm -f  $HOME/cluster_initialized.txt
+
+    - name: Remove cluster initialization files (/etc/kubernetes/admin.conf)
+      shell: sudo rm -f /etc/kubernetes/admin.conf
+
+    - name: Remove cluster initialization files ($HOME/.kube/config)
+      shell: sudo rm -f $HOME/.kube/config
+
+    - name: Initialize control plane
+      shell: sudo kubeadm init --control-plane-endpoint={{ ansible_ssh_host }} --kubernetes-version=1.21.0 --ignore-preflight-errors=NumCPU  >> cluster_initialized.txt
+      args:
+        chdir: $HOME
+        creates: cluster_initialized.txt
+
+    - name: Validate control plane initialization for current user
+      shell: |
+        sudo mkdir -p $HOME/.kube
+        [ ! -f  $HOME/.kube/config ] && sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+    - name: Install Weavenet kubernetes network plugin
+      shell: kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+

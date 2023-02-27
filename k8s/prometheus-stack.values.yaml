@@ -1,0 +1,23 @@
+# Default values for kube-prometheus-stack.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+grafana:
+  defaultDashboardsTimezone: browser
+  adminPassword: v15Atun4Y07BIlZ0
+  grafana.ini:
+    server:
+      root_url: "https://nsa-sla-monitor.students-epitech.ovh"
+      serve_from_sub_path: true
+    smtp:
+      enabled: true
+      host: smtp.gmail.com:587
+      ;cert_file:
+      ;key_file:
+      skip_verify: true
+      from_address: alertmanager.students.epitech.sla@gmail.com
+      from_name: Grafana
+  smtp:
+    existingSecret: "mail-secrets"
+    userKey: "user"
+    passwordKey: "password"

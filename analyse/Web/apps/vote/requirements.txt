@@ -1,0 +1,6 @@
+Flask
+Redis
+gunicorn
+
+redis==3.5.3 
+redis-py-cluster==2.1.3

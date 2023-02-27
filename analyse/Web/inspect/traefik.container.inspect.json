@@ -1,0 +1,312 @@
+[
+    {
+        "Id": "9f84bdf9023c34e6080f11317668aaa2b4d73da037e2e99a28a85a0d117b0132",
+        "Created": "2023-03-01T09:29:11.009634214Z",
+        "Path": "/traefik",
+        "Args": [
+            "--web",
+            "--docker",
+            "--docker.domain=default-group0-web.francecentral.cloudapp.azure.com",
+            "--metrics.prometheus=true"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 2195,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2023-03-15T18:23:26.423011941Z",
+            "FinishedAt": "2023-03-15T18:08:42.689292311Z"
+        },
+        "Image": "sha256:8b06305d2e0eca68d66088b5290a28c31dd73722f3f8e33c764bd60faf17edd7",
+        "ResolvConfPath": "/var/lib/docker/containers/9f84bdf9023c34e6080f11317668aaa2b4d73da037e2e99a28a85a0d117b0132/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/9f84bdf9023c34e6080f11317668aaa2b4d73da037e2e99a28a85a0d117b0132/hostname",
+        "HostsPath": "/var/lib/docker/containers/9f84bdf9023c34e6080f11317668aaa2b4d73da037e2e99a28a85a0d117b0132/hosts",
+        "LogPath": "/var/lib/docker/containers/9f84bdf9023c34e6080f11317668aaa2b4d73da037e2e99a28a85a0d117b0132/9f84bdf9023c34e6080f11317668aaa2b4d73da037e2e99a28a85a0d117b0132-json.log",
+        "Name": "/app_traefik_1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/var/run/docker.sock:/var/run/docker.sock:rw",
+                "/dev/null:/traefik.toml:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "app_back-tier",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "80"
+                    }
+                ],
+                "8080/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": [],
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/63bf78f222b70c009b4070c96a649a6aa10dee6a4648b9e81d1a591d7963f16a-init/diff:/var/lib/docker/overlay2/4e3b1885872c67c85de6f5792ad5e16da62bfe3cf7dffc6d43a33c92906a9051/diff:/var/lib/docker/overlay2/62dd1b611cda84d347ea25ca1577423d7f2183af2351c96102fd545972885a5e/diff:/var/lib/docker/overlay2/ce7b6ed5cbcbd373688c74c098d5e5375ab71528267867ff8a6124b2eb09bff6/diff",
+                "MergedDir": "/var/lib/docker/overlay2/63bf78f222b70c009b4070c96a649a6aa10dee6a4648b9e81d1a591d7963f16a/merged",
+                "UpperDir": "/var/lib/docker/overlay2/63bf78f222b70c009b4070c96a649a6aa10dee6a4648b9e81d1a591d7963f16a/diff",
+                "WorkDir": "/var/lib/docker/overlay2/63bf78f222b70c009b4070c96a649a6aa10dee6a4648b9e81d1a591d7963f16a/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "893f1a92c1aa17838391471aee3cbd3a8b072c7d4adb4b3250268af491b86a13",
+                "Source": "/var/lib/docker/volumes/893f1a92c1aa17838391471aee3cbd3a8b072c7d4adb4b3250268af491b86a13/_data",
+                "Destination": "/tmp",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "bind",
+                "Source": "/dev/null",
+                "Destination": "/traefik.toml",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/var/run/docker.sock",
+                "Destination": "/var/run/docker.sock",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "9f84bdf9023c",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {},
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "--web",
+                "--docker",
+                "--docker.domain=default-group0-web.francecentral.cloudapp.azure.com",
+                "--metrics.prometheus=true"
+            ],
+            "Image": "traefik:1.7",
+            "Volumes": {
+                "/tmp": {},
+                "/traefik.toml": {},
+                "/var/run/docker.sock": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/traefik"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "2988520cfc11d8647b0825213e15ab3b4fa2476b13f2699fccdb7a4a4b10ecbd",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "app",
+                "com.docker.compose.project.config_files": "/srv/app/docker-compose.yaml",
+                "com.docker.compose.project.working_dir": "/srv/app",
+                "com.docker.compose.service": "traefik",
+                "com.docker.compose.version": "1.26.2",
+                "org.opencontainers.image.description": "A modern reverse-proxy",
+                "org.opencontainers.image.documentation": "https://docs.traefik.io",
+                "org.opencontainers.image.title": "Traefik",
+                "org.opencontainers.image.url": "https://traefik.io",
+                "org.opencontainers.image.vendor": "Traefik Labs",
+                "org.opencontainers.image.version": "v1.7.34"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "0518c4062caa7f058909593b4edf6be894ac30dd289fbfbf283a3fcef63b9b24",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "80"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "80"
+                    }
+                ],
+                "8080/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8080"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/0518c4062caa",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "app_back-tier": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "9f84bdf9023c",
+                        "traefik"
+                    ],
+                    "NetworkID": "565c37102082d3fb09cc34f9567420d607cad06385efb99289fdb31978946366",
+                    "EndpointID": "1f60e6b90db94a0c1e2ef373866038da4e4110cf9dadf872935e6593e34f63af",
+                    "Gateway": "172.19.0.1",
+                    "IPAddress": "172.19.0.5",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:13:00:05",
+                    "DriverOpts": null
+                },
+                "app_front-tier": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "9f84bdf9023c",
+                        "traefik"
+                    ],
+                    "NetworkID": "73467a7581cbb59c97c4aae25dfdc08ae78de0eccf1f27389b0191f66d42b75a",
+                    "EndpointID": "5abbe7537cdf4e324197109831648554b1742045f64d9ff612834ec387add79f",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:12:00:02",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]

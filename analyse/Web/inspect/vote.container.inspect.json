@@ -1,0 +1,260 @@
+[
+    {
+        "Id": "b29a128526847b70c5690c8ac3265c2a3f8910b719033f1041509e5d9ed78224",
+        "Created": "2023-03-01T09:29:09.7866391Z",
+        "Path": "/entrypoint.sh",
+        "Args": [
+            "python app.py",
+            "default-group8-database545807.francecentral.cloudapp.azure.com"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 2220,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2023-03-15T18:23:26.422968841Z",
+            "FinishedAt": "2023-03-15T18:08:42.742258933Z"
+        },
+        "Image": "sha256:bb69d1a611ec2df3ad3b067642885ae21f49e13fa9c63a821d292ca5145c6672",
+        "ResolvConfPath": "/var/lib/docker/containers/b29a128526847b70c5690c8ac3265c2a3f8910b719033f1041509e5d9ed78224/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/b29a128526847b70c5690c8ac3265c2a3f8910b719033f1041509e5d9ed78224/hostname",
+        "HostsPath": "/var/lib/docker/containers/b29a128526847b70c5690c8ac3265c2a3f8910b719033f1041509e5d9ed78224/hosts",
+        "LogPath": "/var/lib/docker/containers/b29a128526847b70c5690c8ac3265c2a3f8910b719033f1041509e5d9ed78224/b29a128526847b70c5690c8ac3265c2a3f8910b719033f1041509e5d9ed78224-json.log",
+        "Name": "/app_vote_1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "app_back-tier",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "5000"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": [],
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/397c730d8e7be16aca37501e8d0438c2cebd6bcdfbc2587966638df6c461adfa-init/diff:/var/lib/docker/overlay2/ab1fc1bf464a7f34eda9b5b2bbc48f81e40dd09058fe6229e7fa0dc1521f56be/diff:/var/lib/docker/overlay2/704754681ebb81da204050603c8ca488ba4397c478c559f17669fd7151265bf6/diff:/var/lib/docker/overlay2/49ac2c2f2c7dd189bf40532d4b636fcc20101f8a7e642bd9a070319f2e88fa16/diff:/var/lib/docker/overlay2/86b1dd7e901555821411082095ce8787cefb84bb877d19879a7911e2f2938ec9/diff:/var/lib/docker/overlay2/1cfeeec8a24e579fcd92cf3fa563ca813d01133455d2213703d38db408222a39/diff:/var/lib/docker/overlay2/3586675ef5e778b15be868c4e9e28d95120523d19710b5a2127721b639ff5dbd/diff:/var/lib/docker/overlay2/424cf8c625e0d370eaf34a6ce24e6dd494e9d84de1d7516e1aba4c19efb94c8a/diff:/var/lib/docker/overlay2/a093e15a46ce56bef09083ae3f409b16ef7dd49772beb8298a998f509dd8d4c2/diff:/var/lib/docker/overlay2/93ef59083e81404c7589ee49e0ec85d5dfab1cbcef57d6c79a7b7c362f1ecfc5/diff:/var/lib/docker/overlay2/e88aec82577fe7dceb2a954b3102424eda4ddacdad4caa13851d1d4fcddeda05/diff:/var/lib/docker/overlay2/86479c0861a6673d6525faaf812037bee027822b60c5e8627d26950454cf1136/diff:/var/lib/docker/overlay2/9f100efc6d12a7e096bc7355d774d700b6863c86b97a42808f03dd51ca1f493f/diff",
+                "MergedDir": "/var/lib/docker/overlay2/397c730d8e7be16aca37501e8d0438c2cebd6bcdfbc2587966638df6c461adfa/merged",
+                "UpperDir": "/var/lib/docker/overlay2/397c730d8e7be16aca37501e8d0438c2cebd6bcdfbc2587966638df6c461adfa/diff",
+                "WorkDir": "/var/lib/docker/overlay2/397c730d8e7be16aca37501e8d0438c2cebd6bcdfbc2587966638df6c461adfa/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "b29a12852684",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PREFIX=/vote",
+                "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568",
+                "PYTHON_VERSION=3.9.16",
+                "PYTHON_PIP_VERSION=22.0.4",
+                "PYTHON_SETUPTOOLS_VERSION=58.1.0",
+                "PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/d5cb0afaf23b8520f1bbcfed521017b4a95f5c01/public/get-pip.py",
+                "PYTHON_GET_PIP_SHA256=394be00f13fa1b9aaa47e911bdb59a09c3b2986472130f30aa0bfaf7f3980637"
+            ],
+            "Cmd": [
+                "/entrypoint.sh",
+                "python app.py",
+                "default-group8-database545807.francecentral.cloudapp.azure.com"
+            ],
+            "Image": "default-admin.francecentral.cloudapp.azure.com:5000/vote:latest",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "174ac54e24954e1833d63f9c73bbe689f438b3290edfb851dc35731271125e16",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "app",
+                "com.docker.compose.project.config_files": "/srv/app/docker-compose.yaml",
+                "com.docker.compose.project.working_dir": "/srv/app",
+                "com.docker.compose.service": "vote",
+                "com.docker.compose.version": "1.26.2",
+                "traefik.frontend.rule": "Host:default-group8-web407675.francecentral.cloudapp.azure.com;PathPrefix:/vote,/static,/dotnet",
+                "traefik.port": "80"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "48f07f6908cdeaf6f6fab04a31b854a493de1c4c1a5a747871330386792831b4",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "5000"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "5000"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/48f07f6908cd",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "app_back-tier": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "vote",
+                        "b29a12852684"
+                    ],
+                    "NetworkID": "565c37102082d3fb09cc34f9567420d607cad06385efb99289fdb31978946366",
+                    "EndpointID": "f36584b6f3f51786adf7cac810abbd9d6a5ffe44a51992fb8a8f5581eebb0e07",
+                    "Gateway": "172.19.0.1",
+                    "IPAddress": "172.19.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:13:00:03",
+                    "DriverOpts": null
+                },
+                "app_front-tier": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "vote",
+                        "b29a12852684"
+                    ],
+                    "NetworkID": "73467a7581cbb59c97c4aae25dfdc08ae78de0eccf1f27389b0191f66d42b75a",
+                    "EndpointID": "5e37c6561dc5cc26d04f91d49cfccf9a81666ee9af54c7132f089fac8df87e4d",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:12:00:03",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]

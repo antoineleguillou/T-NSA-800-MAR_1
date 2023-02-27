@@ -1,0 +1,45 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: config-default
+  labels:
+    alertmanagerConfig: default
+spec:
+  route:
+    groupBy: ["job"]
+    groupWait: 45s
+    groupInterval: 10m
+    repeatInterval: 4h
+    receiver: mail
+  receivers:
+    - name: mail
+      emailConfigs:
+        - to: alertmanager.students.epitech.sla@gmail.com
+          from: alertmanager.students.epitech.sla@gmail.com
+          smarthost: smtp.gmail.com:587
+          authUsername: alertmanager.students.epitech.sla@gmail.com
+          authIdentity: alertmanager.students.epitech.sla@gmail.com
+          authPassword:
+            name: mail-password
+            key: password
+          requireTLS: true
+        - to: enzo1.scaduto@epitech.eu
+          from: alertmanager.students.epitech.sla@gmail.com
+          smarthost: smtp.gmail.com:587
+          authUsername: alertmanager.students.epitech.sla@gmail.com
+          authIdentity: alertmanager.students.epitech.sla@gmail.com
+          authPassword:
+            name: mail-password
+            key: password
+          requireTLS: true
+
+---
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: mail-password
+data:
+  password: cnd5Y2Zqa2h6dnBteHBwaw==
+---
+

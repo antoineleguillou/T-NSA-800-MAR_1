@@ -1,0 +1,10 @@
+---
+# tasks file for ssh-copy
+
+- name: copying ssh key
+  become: true
+  copy:
+    src: "./gcloud"
+    dest: "/.ssh/gcloud"
+    owner: antoine
+    mode: "0400"

@@ -1,0 +1,4 @@
+---
+# vars file for init-k8s
+kubernetes_deps_package_version: "1.21.0-00"
+user: antoine

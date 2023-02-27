@@ -1,0 +1,175 @@
+---
+# tasks file for init-k8s
+- name: update packages
+  become: true
+  shell: apt update
+
+- name: Disable swap partition
+  shell: sudo swapoff -a
+  become: true
+  become_user: "{{ user }}"
+
+- name: allow iptables to see traffic
+  shell: sudo modprobe br_netfilter
+  become: true
+  become_user: "{{ user }}"
+
+- name: install apt-transport-https
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: install  ca-certificates
+  apt:
+    name: ca-certificates
+    state: present
+
+- name: install curl
+  apt:
+    name: curl
+    state: present
+
+- name: install gnupg
+  apt:
+    name: gnupg
+    state: present
+
+- name: install lsb-release
+  apt:
+    name: lsb-release
+    state: present
+
+- name: Create GPG key directory
+  shell: sudo mkdir -m 0755 -p /etc/apt/keyrings
+  become: true
+  become_user: "{{ user }}"
+
+- name: Add containerd container runtime repository
+  shell: |
+    [ ! -f /etc/apt/keyrings/docker.gpg ] && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  become: true
+  become_user: "{{ user }}"
+
+- name: Download Google cloud GPG key
+  shell: sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+  become: true
+  become_user: "{{ user }}"
+
+- name: Add the Kubernetes apt repository
+  shell: echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  become: true
+  become_user: "{{ user }}"
+
+- name: update packages
+  shell: sudo apt update
+  become: true
+  become_user: "{{ user }}"
+
+- name: install rsync on the ansible controller
+  package:
+    name: rsync
+    state: present
+
+- name: install docker-ce
+  apt:
+    name: docker-ce
+    state: present
+
+- name: install docker-ce-cli
+  apt:
+    name: docker-ce-cli
+    state: present
+
+- name: install containerd
+  apt:
+    name: containerd.io
+    state: present
+
+- name: install docker-buildx-plugin
+  apt:
+    name: docker-buildx-plugin
+    state: present
+
+- name: install docker-compose-plugin
+  apt:
+    name: docker-compose-plugin
+    state: present
+
+- name: install kubelet
+  apt:
+    name: kubelet={{ kubernetes_deps_package_version }}
+    state: present
+    allow_downgrade: true
+
+- name: install kubeadm
+  apt:
+    name: kubeadm={{ kubernetes_deps_package_version }}
+    state: present
+    allow_downgrade: true
+
+- name: install kubectl
+  apt:
+    name: kubectl={{ kubernetes_deps_package_version }}
+    state: present
+    allow_downgrade: true
+
+- name: install kubernetes cni
+  apt:
+    name: kubernetes-cni=0.8.7-00
+    state: present
+    allow_downgrade: true
+
+- name: Add docker cgroup driver to systemd to communicate with kubernetes
+  shell: |
+    sudo cat > /etc/docker/daemon.json <<EOF
+    {
+      "exec-opts": ["native.cgroupdriver=systemd"],
+      "log-driver": "json-file",
+      "storage-driver": "overlay2"
+    }
+    EOF
+    sudo mkdir -p /etc/systemd/system/docker.service.d
+  become: true
+  become_user: "{{ user }}"
+
+- name: Generate containerd default configuration
+  shell: |
+    mkdir -p /etc/containerd
+    containerd config default | sudo tee /etc/containerd/config.toml
+  become: true
+  become_user: "{{ user }}"
+
+- name: Remove containerd default configuration
+  shell: sudo rm -f /etc/containerd/config.toml
+  become: true
+  become_user: "{{ user }}"
+
+- name: Restart daemon-reload service
+  shell: sudo systemctl daemon-reload
+  become: true
+  become_user: "{{ user }}"
+
+- name: Restart docker
+  shell: sudo systemctl restart docker
+  become_user: "{{ user }}"
+
+- name: Restart containerd services
+  shell: sudo systemctl restart containerd
+  become: true
+  become_user: "{{ user }}"
+
+- name: Mark hold kubelet kubeadm kubectl
+  shell: sudo apt-mark hold kubelet kubeadm kubectl
+  become: true
+  become_user: "{{ user }}"
+
+- name: Enable kubelet service
+  shell: sudo systemctl enable kubelet
+  become: true
+  become_user: "{{ user }}"
+
+- name: Restart kubelet services
+  shell: sudo systemctl restart kubelet
+  become: true
+  become_user: "{{ user }}"

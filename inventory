@@ -1,0 +1,4 @@
+[master]
+34.72.140.32 ansible_become_password=foobar
+[workers]
+34.123.245.50 ansible_become_password=foobar
