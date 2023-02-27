@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jimmy GAUBE" />
+  <title>SLA</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <base target="_blank">
+  
+  <style type="text/css">
+  /*
+    HEADER
+  */
+  
+  header {
+    height:500px;
+    background: url("images/cover_MSC.jpg") right bottom;
+    background-size: 45%;
+    margin:0px;
+    color: white;
+  }
+  
+  header h1 {
+    padding: 200px 0 0 30px;
+    text-transform: uppercase;
+    color: white;  
+    font-size: 60px;
+    margin:  0;
+  }
+  
+  header p.subtitle {
+    padding: 170px 0 0 30px;
+    margin:  0px;
+    padding-top: 0px;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  
+  header p.author {
+    display: none;
+  }
+  
+  
+  
+  
+  /*
+    BLOCKS
+  */
+  
+  .note {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      background-color:rgba(255, 0, 0, 0.1);    
+  }
+  .note:before {
+    content: url(images/icon_note_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+  
+  .warning {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;
+      margin:30px 20px 20px 20px;
+      background-color: rgba(88, 147, 193, 0.1);
+      padding: 10px 10px 10px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .warning:before {
+    content: url(images/icon_warning_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+  
+  .info {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgb(255, 255, 255);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .info:before {
+    content: url(images/icon_info_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+  
+  .tip {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgba(240, 220, 154, 0.1);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .tip:before {
+    content: url(images/icon_tip_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+  
+  .terminal {
+      border: solid 1px rgb(200, 200, 200);
+      box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+      border-radius:10px;    
+      background-color: rgba(240, 220, 154, 0.1);
+      padding: 10px 10px 10px 20px;
+      margin:30px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+  }
+  .terminal:before {
+    content: url(images/icon_terminal_small.png);
+    margin-top:-35px;
+    margin-left:-35px;
+    margin-bottom: -20px;
+  }
+  
+  /*
+    QUOTE
+  */
+  
+  .quote {
+      border-left: solid 3px rgb(140, 140, 140);
+      border-radius:0 10px 10px 0;    
+      padding: 0px 0px 0px 20px;
+      margin:30px 40px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color:rgba(140, 140, 140, 0.1); 
+      position: relative;   
+  }
+  
+  .quote author {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-weight: bold;
+      font-style: normal;
+  }
+  .quote author:before {
+    content: '-- ';
+  }
+  .quote author:after {
+    content: '-- ';
+  }
+  
+  /*
+    COLUMNS
+  */
+  
+  div.column-33 {
+    width:  31%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column-50 {
+    width:  48%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column-66 {
+    width:  65%;
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.column {
+    display: inline-block;
+    min-width: 120px;
+    vertical-align: middle;
+    padding-left:  15px;
+  }
+  div.columns {
+    padding-left:  -15px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  
+  
+  /*
+    FOOTER
+  */
+  
+  div.footer {
+    background: #FFFFFF url("images/footer_MSC.jpg") no-repeat;
+    height:  215px;
+  }
+  
+  
+  
+  
+  /*
+    GENERIC
+  */
+  
+  html {
+    font-size: 100%;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  body {
+    color: #444;
+    font-family: Montserrat-thin, sans-serif;
+    font-size: 12px;
+    margin: auto;
+    padding:  0 10px 0 10px;
+    max-width: 800px;
+    background: #fefefe;
+  }
+  
+  a {
+    color: #016bb3;
+  
+  }
+  
+  a:visited {
+    color: #0b0080;
+  }
+  
+  a:hover {
+    color: #06e;
+  }
+  
+  a:active {
+    color: #faa700;
+  }
+  
+  a:focus {
+    outline: thin dotted;
+  }
+  
+  *::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+  
+  *::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+  
+  a::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #016bb3;
+  }
+  
+  a::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #016bb3;
+  }
+  
+  p {
+    margin: 1em 0;
+  }
+  
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    color: #016bb3;
+    line-height: 100%;
+    margin-top: 2em;
+    font-weight: normal;
+    font-size: 3em;
+  }
+  
+  h2 {
+    color: #016bb3;
+    line-height: 110%;
+    margin-top: 2em;
+    font-weight: bold;
+  }
+  
+  h3, h4, h5, h6 {
+    color: #111;
+    line-height: 125%;
+    margin-top: 2em;
+    font-weight: normal;
+  }
+  
+  
+  blockquote {
+    color: #666666;
+    margin: 0;
+    padding-left: 3em;
+    border-left: 0.5em #EEE solid;
+  }
+  
+  hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #eee;
+    margin: 1em 0;
+    padding: 0;
+  }
+  
+  pre, code, kbd, samp {
+    color: #000;
+    font-family: monospace, monospace;
+    _font-family: 'courier new', monospace;
+    font-size: 0.98em;
+  }
+  
+  pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  b, strong {
+    font-weight: bold;
+  }
+  
+  dfn {
+    font-style: italic;
+  }
+  
+  ins {
+    background: #ff9;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  mark {
+    background: #ff0;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+  }
+  
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  ul, ol {
+    margin: 1em 0;
+    padding: 0 0 0 2em;
+  }
+  
+  li p:last-child {
+    margin-bottom: 0;
+  }
+  
+  ul ul, ol ol {
+    margin: .3em 0;
+  }
+  
+  dl {
+    margin-bottom: 1em;
+  }
+  
+  dt {
+    font-weight: bold;
+    margin-bottom: .8em;
+  }
+  
+  dd {
+    margin: 0 0 .8em 2em;
+  }
+  
+  dd:last-child {
+    margin-bottom: 0;
+  }
+  
+  img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+  }
+  
+  figure {
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+  }
+  
+  figure img {
+    border: none;
+    margin: 0 auto;
+  }
+  
+  figcaption {
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0 0 .8em;
+  }
+  
+  table {
+    margin-bottom: 2em;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+  table th {
+    padding: .2em 1em;
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+  }
+  
+  table td {
+    padding: .2em 1em;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    vertical-align: top;
+  }
+  
+  .author {
+    font-size: 1.2em;
+    text-align: center;
+  }
+  
+  @media only screen and (min-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+  }
+  @media print {
+    * {
+      background: transparent !important;
+      color: black !important;
+      filter: none !important;
+      -ms-filter: none !important;
+    }
+  
+    a, a:visited {
+      text-decoration: underline;
+    }
+  
+    hr {
+      height: 1px;
+      border: 0;
+      border-bottom: 1px solid black;
+    }
+  
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+  
+    abbr[title]:after {
+      content: " (" attr(title) ")";
+    }
+  
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+      content: "";
+    }
+  
+    pre, blockquote {
+      border: 1px solid #999;
+      padding-right: 1em;
+      page-break-inside: avoid;
+    }
+  
+    tr, img {
+      page-break-inside: avoid;
+    }
+  
+    img {
+      max-width: 100% !important;
+    }
+  
+    @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+  }
+  
+    @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+  }
+  
+    p, h2, h3 {
+      orphans: 3;
+      widows: 3;
+    }
+  
+    h2, h3 {
+      page-break-after: avoid;
+    }
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SLA</h1>
+<p class="subtitle">smthg_to_find</p>
+<p class="author">Jimmy GAUBE</p>
+</header>
+<p>A client of yours wants to change outsourcing, and is interested in your profile.</p>
+<p><span class="image">pbsolver</span></p>
+<p>They want to have different metrics on their infrastructure, to be reactive on incidents that could impact them and garantuee a high-disponibility service.<br />
+To test your skills, they decide to assign your group an infrastructure mimicking theirs on a Public Cloud service, but with limited components.<br />
+This infrastructure will be available on mondays and tuesdays, from 10am to 6pm, and is made of:</p>
+<ul>
+<li><p>an <strong>application server</strong> which carries a vote page, a result page, and a worker,</p></li>
+<li><p>a <strong>database server</strong> which carries a PostgreSQL and Redis database,</p></li>
+<li><p>a <strong>Docker server</strong> which will be at your disposal.</p></li>
+</ul>
+<div class="warning">
+<p>Your client wants to test your reactivity but also your capacity to come with improvements and suggestions.</p>
+</div>
+
+<div class="columns">
+<div class="column-66">
+<p>In a first phase, you will have time to discover, get familiar with the infra and add your own tools to it.</p>
+<div class="tip">
+<p>Take advantage of this first phase to test extensively, prepare your metrics, monitoring, automated deployments, backups and restores,… Feel free to restart and reinstall without taking care of the SLA.</p>
+</div>
+</div><div class="column-33">
+<p><span class="image">comfy</span></p>
+</div>
+</div>
+<p>Then, you will be tested on realm-like incidents.</p>
+<p><span class="image">incidents</span></p>
+<!-- The application is located on "/srv/app", launching with a docker-compose file.#br
+
+The vote page send vote to redis database. The worker then process the vote to PostgreSQL. The result page present final result from PostgreSQL.
+ -->
+<div class="columns">
+<div class="column-33">
+<p><span class="image">tests</span></p>
+</div><div class="column-66">
+<div class="warning">
+<p><strong>GET READY FOR THE APPLIANCE TEST !!</strong>*</p>
+</div>
+<p>The test can start at any time after the first 3 weeks.<br />
+The client will then start monitoring the two applications in order to measure their availability over several weeks. It will be up to you to keep them accessible and functional.</p>
+</div>
+</div>
+<div class="tip">
+<p>Be careful, if a database fails, your application will no longer respond correctly to client monitoring.</p>
+</div>
+<div class="columns">
+<div class="column-66">
+<div class="info">
+<p>Obvoiusly, you must be able to restore data from backup in case of database failure.</p>
+</div>
+</div><div class="column-33">
+<p><span class="image">floppyDisks</span></p>
+</div>
+</div>
+
+<p>During these weeks, incidents / events will be regularly triggered, for example :</p>
+<ul>
+<li><p>cessation of a service</p></li>
+<li><p>request spam</p></li>
+<li><p>resource saturation (CPU / RAM / FS)</p></li>
+<li><p>database crash</p></li>
+<li><p>killed container</p></li>
+<li><p>and so on…</p></li>
+</ul>
+<p>During each incident, you will need to:</p>
+<ol type="1">
+<li><p>notify the client of the start of unavailability,</p></li>
+<li><p>restore the service in the exact same state as it was before the incident,</p></li>
+<li><p>notify the client of the restoration of the service with a brief analysis of the reason / the correctives applied / the solutions so that it does not happen again.</p></li>
+</ol>
+<div class="tip">
+<p>No need here to advice you to count on reliable metrics, monitoring and backup / restore system correctly documented, in order to be as reactive as possible.</p>
+</div>
+<p>At the very end of the exercise, you will be asked to:</p>
+<ul>
+<li><p>present your different <strong>monitoring tools and dashboards</strong></p></li>
+<li><p>carry out a <strong>REX</strong> on the main incidents detected / treated</p></li>
+<li><p>show ways of <strong>improving the resilience</strong> of this infrastructure</p></li>
+</ul>
+<div class="warning">
+<p>If you lose a machine, we will have the possibility to destroy it in order to rebuild it, but it will then be delivered <strong>in the state it was the first time that you connected to it</strong>.<br />
+Therefore document (and automate) the different things you deploy and how you deploy them.</p>
+</div>
+<!-- 
+Also remember to document your various incident resolutions and keep track,  so that if the same occurs it is easier to detect / resolve.#br
+ -->
+<div class="footer"></div>
+</body>
+</html>
